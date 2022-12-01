@@ -65,18 +65,16 @@
 </head>
 <body>
     <h1>내용 등록 화면</h1>
-    <form method="post" action="bd_update.do?seq=${msg.seq}">
-        <table>
-            <tr><td style="max-height: 50px; min-width: 70px;">제목</td><td>${msg.title}</td></tr>
-            <tr><td style="max-height: 50px; min-width: 70px;">작성자</td><td>${msg.name}</td></tr>
-            <tr><td style="min-height: 80px; min-width: 70px; line-height: 80px">내용</td><td>${msg.content}</td></tr>
-            <tr><td style="max-height: 30px; min-width: 70px; line-height: 30px">작성날짜</td><td style="line-height: 30px;">${msg.writetime}</td></tr>
-            <tr class="bu">
-                <td><a href="board.do" style= "padding:1px 6px; font-weight: bold; font-size: 16px">[목록]</a></td>
-                <td><input type="submit" id="fix" value="[수정]"></td>
-                <td><input type="submit" id="delete" value="[삭제]" style= "word-break:break-all;"></td>
-            <tr>
-        </table>
-    </form>
+    <table>
+        <tr><td style="max-height: 50px; min-width: 70px;">제목</td><td>${msg.title}</td></tr>
+        <tr><td style="max-height: 50px; min-width: 70px;">작성자</td><td>${msg.name}</td></tr>
+        <tr><td style="min-height: 80px; min-width: 70px; line-height: 80px">내용</td><td>${msg.content}</td></tr>
+        <tr><td style="max-height: 30px; min-width: 70px; line-height: 30px">작성날짜</td><td style="line-height: 30px;">${msg.writetime}</td></tr>
+        <tr class="bu">
+            <td><a href="board.do" style= "padding:1px 6px; font-weight: bold; font-size: 16px">[목록]</a></td>
+            <td><a href="bd_update.do?seq=${msg.seq}" style= "padding:1px 6px; font-weight: bold; font-size: 16px">[수정]</a></td>
+            <td><a href="bd_update.do?seq=${msg.seq}" style= "padding:1px 6px; font-weight: bold; font-size: 16px">[삭제]</a></td>
+        <tr>
+    </table>
 </body>
 </html>

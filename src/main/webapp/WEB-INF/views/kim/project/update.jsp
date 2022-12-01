@@ -56,7 +56,7 @@
         .bu>td>input{
             font-weight:bold;
         }
-        input:focus {
+        input:focus{
             outline: none;
         }
 
@@ -65,6 +65,8 @@
 <body>
 <h1>내용 등록 화면</h1>
 <form method="post" action="bd_update_exec.do">
+<input type="hidden" name="seq" value="${msg.seq}">
+<input type="hidden" name="writetime" value="${msg.writetime}">
     <table>
         <tr><td style="max-height: 50px; min-width: 70px;">제목</td><td><input type="text" value="${msg.name}" name="name" id="name"></td></tr>
         <tr><td style="max-height: 50px; min-width: 70px;">작성자</td><td><input type="text" value="${msg.title}" name="title" id="title"></td></tr>
@@ -72,8 +74,8 @@
         <tr><td style="max-height: 30px; min-width: 70px; line-height: 30px">비밀번호</td><td><input type="password" name="password" id="password" value="" style="border:none"></td></tr>
         <tr class="bu">
             <td><a href="board.do" style= "padding:1px 6px; font-weight: bold; font-size: 16px">[목록]</a></td>
-            <td><input type="button" id="delete" value="[삭제]" onClick="update_click(this.form, this.id);"></td>
             <td><input type="button" id="fix" value="[수정]" onClick="update_click(this.form, this.id);"></td>
+            <td><input type="button" id="delete" value="[삭제]" onClick="update_click(this.form, this.id);"></td>
         <tr>
     </table>
 </form>
@@ -83,15 +85,17 @@
         let input = document.getElementById("password").value;
         if(id === "fix"){
             let conf = confirm("본내용을 수정 하시겠습니까?");
-            if(conf == true){};
-            if(conf == false){return;};
-        }
-        if(id == "delete"){
-            let conf = confirm("본내용을 삭제 하시겠습니까?");
-            if(conf == true){
-                frm.action="bd_delete_exec.do?seq=${msg.seq}"
+            if(conf === true){
+                frm.action="bd_update_exec.do"
             };
-            if(conf == false){return;};
+            if(conf === false){return;}
+        }
+        if(id === "delete"){
+            let conf = confirm("본내용을 삭제 하시겠습니까?");
+            if(conf === true){
+                frm.action="bd_delete_exec.do"
+            };
+            if(conf === false){return;}
         }
         if(pw !== input){
             alert("잘못된 비밀번호 입니다.")
@@ -99,9 +103,7 @@
         }
         if(pw === input){
             frm.submit();
-            return frm;
         }
-        return;
     }
 </script>
 </body>

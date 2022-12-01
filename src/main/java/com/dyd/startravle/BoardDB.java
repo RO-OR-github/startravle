@@ -1,5 +1,6 @@
 package com.dyd.startravle;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -42,8 +43,9 @@ public class BoardDB {
     }
 
     public void update(Board bd) {
-        String sql = "update board set name=?, title=?, content=?, password=?, where seq=?";
-        jdbcTemplate.update(sql, bd.getName(), bd.getTitle(), bd.getContent(), bd.getPassword());
+        String sql = "update board set name=?, title=?, content=?, writetime=? where seq=?";
+        jdbcTemplate.update(sql, bd.getName(), bd.getTitle(), bd.getContent(), bd.getWritetime(), bd.getSeq());
+
 
     }
 
